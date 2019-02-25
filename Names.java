@@ -43,6 +43,8 @@ public class Names {
 			//Traversal through the entire JSONArray and extracting all names
 			String name = "";
 			int nameIndex = 11;
+			int occurrencesIndex = 12;
+			int occurrences = 0;
 			
 			for(int each=0; each < array.size(); each++) {
 				/*
@@ -51,11 +53,12 @@ public class Names {
 				 */
 				JSONArray eachDataSet = (JSONArray)array.get(each);
 				name = eachDataSet.get(nameIndex).toString().toLowerCase();
-				
+				occurrences = Integer.parseInt(eachDataSet.get(occurrencesIndex).toString());
+
 				if(namesCounter.containsKey(name)) {
-					namesCounter.put(name, namesCounter.get(name)+1);
+					namesCounter.put(name, namesCounter.get(name)+occurrences);
 				}else {
-					namesCounter.put(name,1);
+					namesCounter.put(name,occurrences);
 				}
 			}
 			
